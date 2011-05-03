@@ -1,6 +1,6 @@
 Name:           gtk-sharp-beans
 Version:        2.13.92
-Release:        %mkrel 0.1
+Release:        %mkrel 0.2
 License:        LGPLv2+
 Group:          Development/Other
 Summary:        Extra Gtk# bindings
