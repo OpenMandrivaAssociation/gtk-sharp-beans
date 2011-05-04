@@ -1,11 +1,13 @@
+%define git 19023b6
 Name:           gtk-sharp-beans
-Version:        2.13.92
-Release:        %mkrel 0.2
+Version:        2.14.0
+Release:        %mkrel 1
 License:        LGPLv2+
 Group:          Development/Other
 Summary:        Extra Gtk# bindings
-Url:            http://gitorious.org/gtk-sharp-beans
-Source:         %{name}-%{version}.tar.bz2
+Url:            https://github.com/mono/gtk-sharp-beans/
+# https://github.com/mono/gtk-sharp-beans/tarball/2.14.0
+Source:         %{name}-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 BuildRequires:  gtk-sharp2
@@ -34,11 +36,13 @@ Requires:       %{name} = %{version}
 Files for developing programs that use gtk-sharp-beans
 
 %prep
-%setup -q
+%setup -q -n mono-gtk-sharp-beans-%git
+./autogen.sh
 
 %build
 %configure2_5x
-%make
+#gw parallel make fails in 2.14.0
+make
 
 %install
 %makeinstall_std pkgconfigdir=%_datadir/pkgconfig
@@ -49,13 +53,7 @@ rm -rf "$RPM_BUILD_ROOT"
 %files
 %defattr(-,root,root)
 %doc NEWS AUTHORS README
-%dir %_prefix/lib/mono/gac/gtk-sharp-beans
-%dir %_prefix/lib/mono/gac/gtk-sharp-beans/2.14.0.0__97a95fb57b03c03a
-%_prefix/lib/mono/gac/gtk-sharp-beans/*/*.dll*
-
-%dir %_prefix/lib/mono/gtk-sharp-beans-2.0
-%_prefix/lib/mono/gtk-sharp-beans-2.0/gtk-sharp-beans.dll
-
+%_prefix/lib/%name
 
 %files devel
 %defattr(-,root,root)
