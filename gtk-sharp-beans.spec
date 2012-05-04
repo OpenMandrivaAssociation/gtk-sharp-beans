@@ -1,7 +1,7 @@
 %define git 19023b6
 Name:           gtk-sharp-beans
 Version:        2.14.0
-Release:        %mkrel 1
+Release:        %mkrel 2
 License:        LGPLv2+
 Group:          Development/Other
 Summary:        Extra Gtk# bindings
