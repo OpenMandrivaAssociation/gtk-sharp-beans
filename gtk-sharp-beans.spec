@@ -1,25 +1,20 @@
-%define git 19023b6
-Name:           gtk-sharp-beans
-Version:        2.14.0
-Release:        %mkrel 2
-License:        LGPLv2+
-Group:          Development/Other
-Summary:        Extra Gtk# bindings
-Url:            https://github.com/mono/gtk-sharp-beans/
-# https://github.com/mono/gtk-sharp-beans/tarball/2.14.0
-Source:         %{name}-%{version}.tar.gz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Name:		gtk-sharp-beans
+Version:	2.13.92
+Release:	1
+License:	LGPLv2+
+Group:		Development/Other
+Summary:	Extra Gtk# bindings
+Url:		http://gitorious.org/gtk-sharp-beans
+Source:		%{name}-%{version}.tar.bz2
 
-BuildRequires:  gtk-sharp2
-BuildRequires:  gtk-sharp2-devel
-BuildRequires:  gio-sharp-devel
-BuildRequires:  mono-devel
-BuildRequires:  monodoc-core
-BuildArch: noarch
-%define _requires_exceptions ^lib.*
+BuildRequires:	gtk-sharp2
+BuildRequires:	gtk-sharp2-devel
+BuildRequires:	gio-sharp-devel
+BuildRequires:	mono-devel
+BuildRequires:	monodoc-core
+BuildArch:	noarch
 
 %description
-
 Gtk# Beans aims to fill the gap between the current Gtk# packages
 state and all the blings and desktop integration stuffs anyone
 would want to use.
@@ -28,34 +23,44 @@ It builds on top of Gtk# and extend it by adding new classes and
 extension methods.
 
 %package devel
-Group:          Development/Other
-Summary:        Extra Gtk# bindings
-Requires:       %{name} = %{version}
+Group:		Development/Other
+Summary:	Extra Gtk# bindings
+Requires:	%{name} = %{version}
 
 %description devel
 Files for developing programs that use gtk-sharp-beans
 
 %prep
-%setup -q -n mono-gtk-sharp-beans-%git
-./autogen.sh
+%setup -q
 
 %build
 %configure2_5x
-#gw parallel make fails in 2.14.0
-make
+%make
 
 %install
 %makeinstall_std pkgconfigdir=%_datadir/pkgconfig
 
-%clean
-rm -rf "%{buildroot}"
-
 %files
-%defattr(-,root,root)
 %doc NEWS AUTHORS README
-%_prefix/lib/%name
+%dir %{_prefix}/lib/mono/gac/gtk-sharp-beans
+%dir %{_prefix}/lib/mono/gac/gtk-sharp-beans/2.14.0.0__97a95fb57b03c03a
+%{_prefix}/lib/mono/gac/gtk-sharp-beans/*/*.dll*
+
+%dir %{_prefix}/lib/mono/gtk-sharp-beans-2.0
+%{_prefix}/lib/mono/gtk-sharp-beans-2.0/gtk-sharp-beans.dll
 
 %files devel
-%defattr(-,root,root)
 %doc ChangeLog 
 %{_datadir}/pkgconfig/gtk-sharp-beans-2.0.pc
+
+
+%changelog
+* Tue May 03 2011 Oden Eriksson <oeriksson@mandriva.com> 2.13.92-0.2mdv2011.0
++ Revision: 664947
+- mass rebuild
+
+* Sat Aug 07 2010 Götz Waschk <waschk@mandriva.org> 2.13.92-0.1mdv2011.0
++ Revision: 567394
+- import gtk-sharp-beans
+
+
