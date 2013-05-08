@@ -1,30 +1,30 @@
+Summary:	Extra Gtk sharp bindings
 Name:		gtk-sharp-beans
 Version:	2.13.92
 Release:	1
 License:	LGPLv2+
 Group:		Development/Other
-Summary:	Extra Gtk# bindings
 Url:		http://gitorious.org/gtk-sharp-beans
-Source:		%{name}-%{version}.tar.bz2
-
-BuildRequires:	gtk-sharp2
-BuildRequires:	gtk-sharp2-devel
-BuildRequires:	gio-sharp-devel
-BuildRequires:	mono-devel
-BuildRequires:	monodoc-core
+Source0:	%{name}-%{version}.tar.bz2
 BuildArch:	noarch
+
+BuildRequires:	monodoc-core
+BuildRequires:	pkgconfig(gapi-2.0)
+BuildRequires:	pkgconfig(gio-sharp-2.0)
+BuildRequires:	pkgconfig(gtk-sharp-2.0)
+BuildRequires:	pkgconfig(mono)
 
 %description
 Gtk# Beans aims to fill the gap between the current Gtk# packages
 state and all the blings and desktop integration stuffs anyone
 would want to use.
 
-It builds on top of Gtk# and extend it by adding new classes and
+It builds on top of Gtk sharp and extend it by adding new classes and
 extension methods.
 
 %package devel
 Group:		Development/Other
-Summary:	Extra Gtk# bindings
+Summary:	Extra Gtk sharp bindings
 Requires:	%{name} = %{version}
 
 %description devel
@@ -52,15 +52,4 @@ Files for developing programs that use gtk-sharp-beans
 %files devel
 %doc ChangeLog 
 %{_datadir}/pkgconfig/gtk-sharp-beans-2.0.pc
-
-
-%changelog
-* Tue May 03 2011 Oden Eriksson <oeriksson@mandriva.com> 2.13.92-0.2mdv2011.0
-+ Revision: 664947
-- mass rebuild
-
-* Sat Aug 07 2010 Götz Waschk <waschk@mandriva.org> 2.13.92-0.1mdv2011.0
-+ Revision: 567394
-- import gtk-sharp-beans
-
 
