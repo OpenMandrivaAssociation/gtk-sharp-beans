@@ -1,7 +1,7 @@
 Summary:	Extra Gtk sharp bindings
 Name:		gtk-sharp-beans
 Version:	2.13.92
-Release:	7
+Release:	8
 License:	LGPLv2+
 Group:		Development/Other
 Url:		http://gitorious.org/gtk-sharp-beans
