@@ -4,7 +4,7 @@ Version:	2.13.92
 Release:	11
 License:	LGPLv2+
 Group:		Development/Other
-Url:		http://gitorious.org/gtk-sharp-beans
+Url:		https://gitorious.org/gtk-sharp-beans
 Source0:	%{name}-%{version}.tar.bz2
 BuildArch:	noarch
 
